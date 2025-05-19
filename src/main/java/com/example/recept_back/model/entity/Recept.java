@@ -47,6 +47,86 @@ public class Recept {
     @OneToMany(mappedBy = "recept", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ReceptIngredient> ingredients;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getReceptName() {
+        return receptName;
+    }
+
+    public void setReceptName(String receptName) {
+        this.receptName = receptName;
+    }
+
+    public int getReceptTime() {
+        return receptTime;
+    }
+
+    public void setReceptTime(int receptTime) {
+        this.receptTime = receptTime;
+    }
+
+    public int getReceptPortions() {
+        return receptPortions;
+    }
+
+    public void setReceptPortions(int receptPortions) {
+        this.receptPortions = receptPortions;
+    }
+
+    public String getReceptDescription() {
+        return receptDescription;
+    }
+
+    public void setReceptDescription(String receptDescription) {
+        this.receptDescription = receptDescription;
+    }
+
+    public String getReceptImage() {
+        return receptImage;
+    }
+
+    public void setReceptImage(String receptImage) {
+        this.receptImage = receptImage;
+    }
+
+    public String getReceptLink() {
+        return receptLink;
+    }
+
+    public void setReceptLink(String receptLink) {
+        this.receptLink = receptLink;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<ReceptTag> getReceptTags() {
+        return receptTags;
+    }
+
+    public void setReceptTags(List<ReceptTag> receptTags) {
+        this.receptTags = receptTags;
+    }
+
+    public List<ReceptIngredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<ReceptIngredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -30,6 +30,46 @@ public class ReceptTag {
     @ManyToMany(mappedBy = "receptTags")
     private List<Recept> recepts;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTagName() {
+        return tagName;
+    }
+
+    public void setTagName(String tagName) {
+        this.tagName = tagName;
+    }
+
+    public boolean isGlobal() {
+        return isGlobal;
+    }
+
+    public void setGlobal(boolean global) {
+        isGlobal = global;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Recept> getRecepts() {
+        return recepts;
+    }
+
+    public void setRecepts(List<Recept> recepts) {
+        this.recepts = recepts;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

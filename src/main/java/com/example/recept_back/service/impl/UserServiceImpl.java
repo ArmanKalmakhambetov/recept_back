@@ -1,5 +1,7 @@
 package com.example.recept_back.service.impl;
 
+import com.example.recept_back.model.dto.user.UserRequestDto;
+import com.example.recept_back.model.dto.user.UserResponseDto;
 import com.example.recept_back.model.entity.User;
 import com.example.recept_back.repo.UserRepo;
 import com.example.recept_back.service.abstracts.UserService;
@@ -20,20 +22,27 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<User> getAllUsers() {
-        return userRepo.findAll();
+    public List<UserResponseDto> getAllUsers() {
+        return userRepo.findAll().stream()
+                .map(this::toDto)
+                .toList();
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<User> getUserById(Long id) {
-        return userRepo.findById(id);
+    public Optional<UserResponseDto> getUserById(Long id) {
+        return userRepo.findById(id).map(this::toDto);
     }
 
     @Override
     @Transactional
-    public User saveUser(User user) {
-        return userRepo.save(user);
+    public UserResponseDto saveUser(UserRequestDto userRequestDto) {
+        User user = new User();
+        user.setLogin(userRequestDto.getLogin());
+        user.setUsername(userRequestDto.getUsername());
+        user.setPassword(userRequestDto.getPassword());
+        User savedUser = userRepo.save(user);
+        return toDto(savedUser);
     }
 
     @Override
@@ -42,4 +51,11 @@ public class UserServiceImpl implements UserService {
         userRepo.deleteById(id);
     }
 
+    private UserResponseDto toDto(User user) {
+        UserResponseDto dto = new UserResponseDto();
+        dto.setUserId(user.getId());
+        dto.setLogin(user.getLogin());
+        dto.setUsername(user.getUsername());
+        return dto;
+    }
 }
