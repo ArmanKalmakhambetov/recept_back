@@ -51,6 +51,11 @@ public class UserServiceImpl implements UserService {
         userRepo.deleteById(id);
     }
 
+    @Override
+    public Optional<UserResponseDto> getUserByLogin(String login) {
+        return Optional.of(toDto(userRepo.findUserByLogin(login)));
+    }
+
     private UserResponseDto toDto(User user) {
         UserResponseDto dto = new UserResponseDto();
         dto.setUserId(user.getId());

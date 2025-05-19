@@ -13,4 +13,6 @@ public interface UserService {
     UserResponseDto saveUser(UserRequestDto userRequestDto);
     void deleteUser(Long id);
 
+    Optional<UserResponseDto> getUserByLogin(String login);
+
 }
