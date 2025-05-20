@@ -14,6 +14,7 @@ public interface ReceptService {
     List<ReceptResponseDto> getAllReceptByTagId(Long id);
     Optional<ReceptResponseDto> getReceptById(Long id);
     ReceptResponseDto saveRecept(ReceptRequestDto dto);
+    ReceptResponseDto createRecept(ReceptRequestDto dto);
 
     void deleteRecept(Long id);
 }
